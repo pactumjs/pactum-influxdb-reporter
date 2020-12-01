@@ -7,8 +7,9 @@ const tests = [];
 const ir = {
 
   name: 'InfluxDBReporter',
-  db: 'APITests',
-  measurement: 'ComponentTests',
+  url: '',
+  db: '',
+  measurement: '',
   tags: {},
 
   afterSpec(spec) {
@@ -24,7 +25,7 @@ const ir = {
   },
 
   end() {
-    const db = influx.db({ url: '', db: ''});
+    const db = influx.db({ url: this.url, db: this.db});
     const metrics = [];
     for (let i = 0; i < specs.length; i++) {
       const metric = {
