@@ -34,7 +34,7 @@ const ir = {
         measurement: this.measurement
       };
       const spec = specs[i];
-      metric.tags['name'] = spec.info.name;
+      metric.tags['name'] = spec.info.name || 'NA';
       metric.tags['method'] = spec.request.method;
       metric.tags['path'] = spec.request.path;
       Object.assign(metric.tags, this.tags);
