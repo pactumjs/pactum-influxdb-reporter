@@ -1,0 +1,35 @@
+{
+  "name": "pactum-influxdb-reporter",
+  "version": "1.0.0",
+  "description": "InfluxDB reporter for pactum tests",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "test": "uvu test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASaiAnudeep/pactum-influxdb-reporter.git"
+  },
+  "keywords": [
+    "pactum",
+    "influxdb",
+    "reporter"
+  ],
+  "author": "Anudeep <asa.anudeep4@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ASaiAnudeep/pactum-influxdb-reporter/issues"
+  },
+  "homepage": "https://github.com/ASaiAnudeep/pactum-influxdb-reporter#readme",
+  "files": [
+    "/src"
+  ],
+  "devDependencies": {
+    "pactum": "^2.0.13",
+    "uvu": "^0.3.4"
+  },
+  "dependencies": {
+    "influxdb-v1": "^1.0.1"
+  }
+}
