@@ -1,6 +1,6 @@
 {
   "name": "pactum-influxdb-reporter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "InfluxDB reporter for pactum tests",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
