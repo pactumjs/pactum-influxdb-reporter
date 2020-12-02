@@ -19,13 +19,14 @@ test.before(() => {
     }
   });
   mock.addMockInteraction({
+    id: 'influx',
     withRequest: {
       "method": "POST",
       "path": "/write",
       "query": {
         "db": "TestDB"
       },
-      "body": "ComponentTests,name=NA,method=GET,path=http://localhost:9393/api/user,Project=pactum-influxdb-reporter pass=1,fail=0,error=0\nComponentTests,name=NA,method=GET,path=http://localhost:9393/api/user,Project=pactum-influxdb-reporter pass=0,fail=1,error=0\nComponentTests,name=NA,method=GET,path=http://localhost:9001/api/user,Project=pactum-influxdb-reporter pass=0,fail=0,error=1"
+      "body": "ComponentTests,Method=GET,Path=http://localhost:9393/api/user,Project=pactum-influxdb-reporter pass=1,fail=0,error=0\nComponentTests,Method=GET,Path=http://localhost:9393/api/user,Project=pactum-influxdb-reporter pass=0,fail=1,error=0\nComponentTests,Name=ErrorSpec,Method=GET,Path=http://localhost:9001/api/user,Project=pactum-influxdb-reporter pass=0,fail=0,error=1"
     },
     willRespondWith: {
       status: 200
@@ -74,6 +75,7 @@ test('spec failed', async () => {
 test('spec error', async () => {
   try {
     await pactum.spec()
+      .name('ErrorSpec')
       .get('http://localhost:9001/api/user')
       .expectStatus(200);
   } catch (error) {
@@ -83,10 +85,17 @@ test('spec error', async () => {
 
 test('run reporter', async () => {
   await reporter.end();
+  assert.equal(mock.getInteraction('influx').exercised, true);
 });
 
-test('validate influx db reporter', async () => {
-
+test('spec passed - enable false', async () => {
+  ir.reset();
+  ir.enable = false;
+  await pactum.spec()
+    .useMockInteraction('get user')
+    .get('/api/user')
+    .expectStatus(200);
+  await reporter.end();
 });
 
 test.run();

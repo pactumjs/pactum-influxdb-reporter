@@ -21,7 +21,13 @@ before(() => {
   pir.url = '<influxdb url>';
   pir.db = '<db name>';
   pir.measurement = '<measurement name>';
-  pir.tags = { /* custom tags like - build version */ };
+
+  /* custom tags like - build version */
+  pir.tags = { Version: '1.0.12' }; // optional
+
+  /* publishing results to influxdb can be disabled while running locally*/
+  pir.enable = false; // default is true
+  
   reporter.add(pir);
 });
 
