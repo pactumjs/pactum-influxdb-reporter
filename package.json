@@ -1,6 +1,6 @@
 {
   "name": "pactum-influxdb-reporter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "InfluxDB reporter for pactum tests",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
@@ -30,6 +30,6 @@
     "uvu": "^0.3.4"
   },
   "dependencies": {
-    "influxdb-v1": "^1.0.1"
+    "influxdb-v1": "^1.0.2"
   }
 }
