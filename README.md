@@ -11,7 +11,7 @@ npm install --save-dev pactum-influxdb-reporter
 
 ## Usage
 
-```javascript
+```js
 const pir = require('pactum-influxdb-reporter');
 const pactum = require('pactum');
 const reporter = pactum.reporter;
@@ -24,9 +24,6 @@ before(() => {
 
   /* custom tags like - build version */
   pir.tags = { Version: '1.0.12' }; // optional
-
-  /* publishing results to influxdb can be disabled while running locally*/
-  pir.enable = false; // default is true
   
   reporter.add(pir);
 });
